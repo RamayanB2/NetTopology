@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "NetTopology.data.unityweb",
+"asmCodeUrl": "NetTopology.asm.code.unityweb",
+"asmMemoryUrl": "NetTopology.asm.memory.unityweb",
+"asmFrameworkUrl": "NetTopology.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#667280"
+}
