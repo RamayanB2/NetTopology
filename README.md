@@ -15,7 +15,7 @@ Windows and SAGE2
 
 ### Installing
 
-Follow the "HOW TO INSTALL" pdf guide inside the NetTopolgy folder
+Follow the "HOW TO INSTALL" pdf guide inside the NetTopolgy folder [HERE](https://github.com/RamayanB2/NetTopology/blob/master/NetTopology/How%20to%20Install%20-%20NetTopology.pdf)
 
 ## Built With
 
