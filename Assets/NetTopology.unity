@@ -1173,7 +1173,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.12580833}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0.16090012}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0.16090393}
   m_SizeDelta: {x: -0.4, y: 7.3782997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &141184624
@@ -4752,12 +4752,12 @@ Prefab:
     - target: {fileID: 224309319597701304, guid: c668188ec9ebe8c4a917a666cae01830,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 758
+      value: 789.99994
       objectReference: {fileID: 0}
     - target: {fileID: 224309319597701304, guid: c668188ec9ebe8c4a917a666cae01830,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -382.45
+      value: -382.72327
       objectReference: {fileID: 0}
     - target: {fileID: 224309319597701304, guid: c668188ec9ebe8c4a917a666cae01830,
         type: 2}
@@ -6921,7 +6921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.8501565}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.3300171, y: -0.1000061}
+  m_AnchoredPosition: {x: -0.3300171, y: -0.099975586}
   m_SizeDelta: {x: -24.4, y: 0.2000122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &856451100
@@ -8421,7 +8421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1060037061
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9802,7 +9802,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -10231,7 +10231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1227572488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16684,7 +16684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2038826554
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,8 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Net;
+using System.Net.Mail;
 using UnityEngine.UI;
 using System.IO;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 public class Settings : MonoBehaviour {
 
@@ -12,6 +15,8 @@ public class Settings : MonoBehaviour {
 
     public Sprite slot_nocell;
     public Sprite slot_cell;
+    private string screenshot_full_path;
+    private SendtoGmail stg;
 
     int slot_widht_height;
 
@@ -38,7 +43,7 @@ public class Settings : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        pathLabel.text = PlayerPrefs.GetString("pathToSaveScreen", "C://Users//Public//Pictures//");       
+        pathLabel.text = PlayerPrefs.GetString("pathToSaveScreen", System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + " / SAGE2_Media / images");       
         actual_size = 0;
         max_slots = 300;
         painel_options_on = true;
@@ -169,15 +174,25 @@ public class Settings : MonoBehaviour {
     }
 
     public void TakeScreenShoot(){
-        if (Application.platform != RuntimePlatform.Android){
+
+        string documentsPath;
+#if !UNITY_ANDROID
+        documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "/SAGE2_Media/images";
+#endif
+        #if UNITY_ANDROID
+        //documentsPath = Application.streamingAssetsPath + "/SAGE2_Media/images";
+        #endif
+
         timer_to_reset = 5;
         ToogleShowSlots();
         bg_Color = slots_area.GetComponent<Image>().color;
         slots_area.GetComponent<Image>().color = color_save_bg;
-            if (Directory.Exists(pathLabel.text))
+            if (Directory.Exists(documentsPath))
             {
-                ScreenCapture.CaptureScreenshot(pathLabel.text + "/NetTopology_ScreenShoot_" + screenShoot_num + ".png");
+                ScreenCapture.CaptureScreenshot(documentsPath + "/NetTopology_ScreenShoot_" + screenShoot_num + ".png");
+                screenshot_full_path = documentsPath + "/NetTopology_ScreenShoot_" + (screenShoot_num-1) + ".png";
                 screenShoot_num++;
+                SendPhotoInEmail();
                 PlayerPrefs.SetInt("screenShoot_num", screenShoot_num);
                 avisoExtPanel.GetComponent<Animation>().Play("inout");
             }
@@ -189,7 +204,14 @@ public class Settings : MonoBehaviour {
             }
         reseting_bg = true;
         Debug.Log("FOTO TIRADA");
-        }
+        
+    }
+
+    public void SendPhotoInEmail() {
+        Debug.Log("A");
+        stg = new SendtoGmail();
+        stg.SendImageToGmail(screenshot_full_path);
+        Debug.Log("B");
     }
 
     public void GoToContactMeForm(){
