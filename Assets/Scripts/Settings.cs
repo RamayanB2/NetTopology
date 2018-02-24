@@ -23,6 +23,7 @@ public class Settings : MonoBehaviour {
     public GameObject slots_area;
     //public BarOptionsSlider icons_area;
     public DragAndDropCell cell;
+    public DragAndDropCell trash_cell;
 
     int screenShoot_num;
     int actual_size;
@@ -36,6 +37,7 @@ public class Settings : MonoBehaviour {
     public Color color_save_bg;
 
     private ItemController item_controller;
+    private AndroidScreenSave ascs;
 
     [SerializeField] bool reseting_bg;
     [SerializeField] float timer_to_reset;
@@ -43,6 +45,9 @@ public class Settings : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //#if UNITY_ANDROID
+        ascs = FindObjectOfType<AndroidScreenSave>();
+//#endif 
         pathLabel.text = PlayerPrefs.GetString("pathToSaveScreen", System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + " / SAGE2_Media / images");       
         actual_size = 0;
         max_slots = 300;
@@ -92,14 +97,18 @@ public class Settings : MonoBehaviour {
     }
 
     void InstantiateSlots(int num) {
-        if (num <= max_slots) {
-            for (int j = 0; j < num; j++){
-                DragAndDropCell dpdc = Instantiate(cell, Vector3.one, Quaternion.identity);
+        DragAndDropCell dpdc;
+        if (num <= max_slots) {            
+            for (int j = 0; j < num-1; j++){
+                dpdc = Instantiate(cell, Vector3.one, Quaternion.identity);
                 dpdc.transform.parent = slots_area.transform;
                 dpdc.transform.localScale = Vector3.one;
             }
         }
-        
+        dpdc = Instantiate(trash_cell, Vector3.one, Quaternion.identity);
+        dpdc.transform.parent = slots_area.transform;
+        dpdc.transform.localScale = Vector3.one;
+
     }
 
     public void CleanSlots(Button b) {
@@ -174,15 +183,16 @@ public class Settings : MonoBehaviour {
     }
 
     public void TakeScreenShoot(){
-
-        string documentsPath;
-#if !UNITY_ANDROID
-        documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "/SAGE2_Media/images";
-#endif
-        #if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
+        SaveScreenshotAndroid();
+        return;
         //documentsPath = Application.streamingAssetsPath + "/SAGE2_Media/images";
-        #endif
+#endif
 
+#if !UNITY_ANDROID || UNITY_EDITOR
+        string documentsPath;
+        documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "/SAGE2_Media/images";
+        
         timer_to_reset = 5;
         ToogleShowSlots();
         bg_Color = slots_area.GetComponent<Image>().color;
@@ -190,9 +200,9 @@ public class Settings : MonoBehaviour {
             if (Directory.Exists(documentsPath))
             {
                 ScreenCapture.CaptureScreenshot(documentsPath + "/NetTopology_ScreenShoot_" + screenShoot_num + ".png");
-                screenshot_full_path = documentsPath + "/NetTopology_ScreenShoot_" + (screenShoot_num-1) + ".png";
+                screenshot_full_path = documentsPath + "/NetTopology_ScreenShoot_" + (screenShoot_num) + ".png";
                 screenShoot_num++;
-                SendPhotoInEmail();
+                //SendPhotoInEmail();
                 PlayerPrefs.SetInt("screenShoot_num", screenShoot_num);
                 avisoExtPanel.GetComponent<Animation>().Play("inout");
             }
@@ -204,7 +214,24 @@ public class Settings : MonoBehaviour {
             }
         reseting_bg = true;
         Debug.Log("FOTO TIRADA");
-        
+#endif
+
+    }
+
+    public void SaveScreenshotAndroid() {
+        Texture2D texture;
+        timer_to_reset = 5;
+        ToogleShowSlots();
+        bg_Color = slots_area.GetComponent<Image>().color;
+        slots_area.GetComponent<Image>().color = color_save_bg;
+
+        texture = ScreenCapture.CaptureScreenshotAsTexture();
+        screenShoot_num++;
+        PlayerPrefs.SetInt("screenShoot_num", screenShoot_num);
+        avisoExtPanel.GetComponent<Animation>().Play("inout");
+        ascs.SaveImageToGallery(texture, "NetTopology_ScreenShoot_" + screenShoot_num + ".png","");
+
+        reseting_bg = true;
     }
 
     public void SendPhotoInEmail() {
