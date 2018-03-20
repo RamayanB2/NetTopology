@@ -218,6 +218,33 @@ public class Settings : MonoBehaviour {
 
     }
 
+    public void SaveJsonINSAGE() {
+
+        Texture2D texture;
+        timer_to_reset = 5;
+        ToogleShowSlots();
+        bg_Color = slots_area.GetComponent<Image>().color;
+        slots_area.GetComponent<Image>().color = color_save_bg;
+
+        texture = ScreenCapture.CaptureScreenshotAsTexture();
+        byte[] image_bytes = texture.EncodeToPNG();
+        screenShoot_num++;
+        PlayerPrefs.SetInt("screenShoot_num", screenShoot_num);
+        avisoExtPanel.GetComponent<Animation>().Play("inout");
+
+
+        object[] par = { "netTopology", "default", "PNG",image_bytes};
+        object[] par2 = { "netTopology", "default2", "JSON", "teste" };
+
+        Application.ExternalCall("saveFile", par);
+        Application.ExternalCall("saveFile", "netTopology", "default1", "PNG", image_bytes);
+        Application.ExternalCall("saveFile", par2);
+        Application.ExternalCall("saveFile", "netTopology", "default3", "JSON", "teste");
+        SendMessage("saveFile", par);
+
+        reseting_bg = true;
+    }
+
     public void SaveScreenshotAndroid() {
         Texture2D texture;
         timer_to_reset = 5;
