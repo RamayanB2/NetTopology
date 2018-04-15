@@ -8,9 +8,9 @@
 	"dependencies": [],
 	"load": {},
 	"title": "NetTopology",
-	"version": "1.0.0",
+	"version": "1.2.0",
 	"description": "",
-	"keywords": [ "sage2", "a", "b", "c", "d" ],
-	"author": "Rama <ramayanb2@gmail.com>",
+	"keywords": [ network, topology, net, diagram, teaching, drag, drop, simulation],
+	"author": "Rama <twomorrowthoughts@gmail.com>",
 	"license": "SAGE2-Software-License"
 }

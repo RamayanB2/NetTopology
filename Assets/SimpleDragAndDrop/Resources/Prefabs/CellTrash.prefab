@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222392698812434900}
   - component: {fileID: 114891018915155872}
   - component: {fileID: 114292193566202402}
-  - component: {fileID: 114115601585906976}
+  - component: {fileID: 114799579969974520}
   m_Layer: 5
   m_Name: CellTrash
   m_TagString: Untagged
@@ -48,18 +48,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114115601585906976
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1239453880408140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!114 &114292193566202402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,6 +101,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &114799579969974520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239453880408140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114891018915155872
 MonoBehaviour:
   m_ObjectHideFlags: 1

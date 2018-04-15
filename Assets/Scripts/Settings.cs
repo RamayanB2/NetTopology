@@ -47,7 +47,8 @@ public class Settings : MonoBehaviour {
     void Start () {
         //#if UNITY_ANDROID
         ascs = FindObjectOfType<AndroidScreenSave>();
-//#endif 
+        //#endif 
+        Input.multiTouchEnabled = false; // impede que sejam feitos varios cliques na tela ao mesmo tempo. O que buga o app.
         pathLabel.text = PlayerPrefs.GetString("pathToSaveScreen", System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + " / SAGE2_Media / images");       
         actual_size = 0;
         max_slots = 300;
@@ -240,7 +241,7 @@ public class Settings : MonoBehaviour {
         Application.ExternalCall("saveFile", "netTopology", "default1", "PNG", image_bytes);
         Application.ExternalCall("saveFile", par2);
         Application.ExternalCall("saveFile", "netTopology", "default3", "JSON", "teste");
-        SendMessage("saveFile", par);
+        //SendMessage("saveFile", par);
 
         reseting_bg = true;
     }
