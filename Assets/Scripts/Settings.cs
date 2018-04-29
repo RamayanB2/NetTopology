@@ -81,24 +81,29 @@ public class Settings : MonoBehaviour {
             slot_widht_height = 100;
             slots_area.GetComponent<UnityEngine.UI.GridLayoutGroup>().cellSize = new Vector2(100, 100);
             cell.GetComponent<UnityEngine.UI.GridLayoutGroup>().cellSize = new Vector2(100, 100);
-            InstantiateSlots(num);
+            InstantiateSlots(num+1);
         }
         else if (num <= 143){
             slot_widht_height = 80;
             slots_area.GetComponent<UnityEngine.UI.GridLayoutGroup>().cellSize = new Vector2(80, 80);
             cell.GetComponent<UnityEngine.UI.GridLayoutGroup>().cellSize = new Vector2(80, 80);
-            InstantiateSlots(num);
+            InstantiateSlots(num+1);
         }
         else if (num <= 263 && slot_widht_height > 60) {
             slots_area.GetComponent<UnityEngine.UI.GridLayoutGroup>().cellSize = new Vector2(60,60);
             cell.GetComponent<UnityEngine.UI.GridLayoutGroup>().cellSize = new Vector2(60,60);
             slot_widht_height = 60;
-            InstantiateSlots(num);
+            InstantiateSlots(num+1);
         }
     }
 
     void InstantiateSlots(int num) {
         DragAndDropCell dpdc;
+
+        //dpdc = Instantiate(trash_cell, Vector3.one, Quaternion.identity);
+        //dpdc.transform.parent = slots_area.transform;
+        //dpdc.transform.localScale = Vector3.one;
+
         if (num <= max_slots) {            
             for (int j = 0; j < num-1; j++){
                 dpdc = Instantiate(cell, Vector3.one, Quaternion.identity);
@@ -106,9 +111,6 @@ public class Settings : MonoBehaviour {
                 dpdc.transform.localScale = Vector3.one;
             }
         }
-        dpdc = Instantiate(trash_cell, Vector3.one, Quaternion.identity);
-        dpdc.transform.parent = slots_area.transform;
-        dpdc.transform.localScale = Vector3.one;
 
     }
 
@@ -237,10 +239,12 @@ public class Settings : MonoBehaviour {
         object[] par = { "netTopology", "default", "PNG",image_bytes};
         object[] par2 = { "netTopology", "default2", "JSON", "teste" };
 
+        /*
         Application.ExternalCall("saveFile", par);
         Application.ExternalCall("saveFile", "netTopology", "default1", "PNG", image_bytes);
         Application.ExternalCall("saveFile", par2);
         Application.ExternalCall("saveFile", "netTopology", "default3", "JSON", "teste");
+        */
         //SendMessage("saveFile", par);
 
         reseting_bg = true;

@@ -7,10 +7,10 @@
 	"animation": true,
 	"dependencies": [],
 	"load": {},
-	"title": "NetTopology",
-	"version": "1.2.0",
+	"title": "A NetTopology",
+	"version": "1.1.0",
 	"description": "",
-	"keywords": [ network, topology, net, diagram, teaching, drag, drop, simulation],
-	"author": "Rama <twomorrowthoughts@gmail.com>",
+	"keywords": [ "sage2", "NetTopology", "Business", "Model", "Canvas" ],
+	"author": "Ramayan Bellatrix <twomorrowthoughts@gmail.com>",
 	"license": "SAGE2-Software-License"
 }

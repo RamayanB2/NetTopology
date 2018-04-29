@@ -10,6 +10,5 @@
 "webglContextAttributes": {"preserveDrawingBuffer": false},
 "backgroundUrl": "A NetTopology.jpg",
 "splashScreenStyle": "Light",
-"backgroundColor": "#FFFFFF",
-"cacheControl": {"dataUrl": "must-revalidate"}
+"backgroundColor": "#FFFFFF"
 }
